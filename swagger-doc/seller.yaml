@@ -1,0 +1,63 @@
+paths:
+   /seller/register:
+    post:
+      tags:
+        - seller
+      description: seller register
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: sellerRegister
+          description: seller register object
+          required: true
+          schema:
+            $ref: "#/definitions/sellerRegister"
+      responses:
+        200:
+          description: Seller registered successfully...
+        400:
+          description: Bad request
+        500:
+          description: Server Error
+   /seller/login:
+    post:
+      tags:
+        - seller
+      description: seller login
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: sellerLogin
+          description: seller login object
+          required: true
+          schema:
+            $ref: "#/definitions/sellerLogin"
+      responses:
+        200:
+          description: Seller logged in successfully...
+        400:
+          description: Bad request
+        500:
+          description: Server Error
+definitions: # Schema defination for request body
+  sellerRegister:
+    properties:
+      name:
+        type: string
+        required: true
+      email:
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
+  sellerLogin:
+    properties:
+      email:
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
